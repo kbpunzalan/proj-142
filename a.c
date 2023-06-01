@@ -43,23 +43,13 @@ int main(){
     fclose(file);
 
 	// printf("%d\n", num_sets);
-
-
-
-
-
-
-
-
-
 	
-
 	// printf("Number of sets: %d\n", num_sets);
 
 
 	move = start = 0; 
 	nopts[start]= 1;
-
+	// int f_elem = candidate[0];
 	
 
 	
@@ -92,48 +82,55 @@ int main(){
 					if(!(i>=1))
 						option[move][++nopts[move]] = main_set[candidate-1];
 					else{
-						//! LOGIC OF THE PROJECT
-						int first_sum = 0;
-						for(i=1;i<move;i++)  {
-							// printf("%2i", option[i][nopts[i]]);
-							first_sum += option[i][nopts[i]];
-						}
+						//DITO MAGSTOP NG KUKUNIN NA COMBINATION
 
-						int second_sum = 0;
-						int second_set[N];
-						int second_set_counter = 0;
-						//! change this: gawing dynamic ang array and ang size
-						for (int j = 0; j < N; j++) {
-							int is_present = 0;
-							for (int k=1;k<move;k++) {
-								if (option[k][nopts[k]] == main_set[j]) {
-									is_present = 1;
-									break;
+						//if firstelem == 
+						if(main_set[0] == option[1][nopts[1]]){
+							//! LOGIC OF THE PROJECT
+							int first_sum = 0;
+							for(i=1;i<move;i++)  {
+								// printf("%2i", option[i][nopts[i]]);
+								first_sum += option[i][nopts[i]];
+							}
+
+							int second_sum = 0;
+							int second_set[N];
+							int second_set_counter = 0;
+							//! change this: gawing dynamic ang array and ang size
+							for (int j = 0; j < N; j++) {
+								int is_present = 0;
+								for (int k=1;k<move;k++) {
+									if (option[k][nopts[k]] == main_set[j]) {
+										is_present = 1;
+										break;
+									}
 								}
+								if (!is_present) {
+									second_sum += main_set[j];
+									second_set[second_set_counter++] = main_set[j];
+									// printf("%d ", main_set[j]);
+								} 
 							}
-							if (!is_present) {
-								second_sum += main_set[j];
-								second_set[second_set_counter++] = main_set[j];
-								// printf("%d ", main_set[j]);
-							} 
-						}
-						if (first_sum == second_sum) {
-							printf("{ ");
-							for (int k=1;k<move;k++) {
-								printf("%d ", option[k][nopts[k]]);
-							}
-							printf(" }\t");
-							
-							// Second Set
+							if (first_sum == second_sum) {
+								printf("{ ");
+								for (int k=1;k<move;k++) {
+									printf("%d ", option[k][nopts[k]]);
+								}
+								printf(" }\t");
+								
+								// Second Set
 
-							printf("{ ");
-							for (int k=0;k<second_set_counter;k++) {
-								printf("%d ", second_set[k]);
+								printf("{ ");
+								for (int k=0;k<second_set_counter;k++) {
+									printf("%d ", second_set[k]);
+								}
+								printf(" }\n");
 							}
-							printf(" }\n");
+
+							break;							
 						}
 
-						break;
+
 						
 					}
 				}
