@@ -49,9 +49,6 @@ int main(){
 
 	move = start = 0; 
 	nopts[start]= 1;
-	// int f_elem = candidate[0];
-	
-
 	
 	while (nopts[start] >0) //while dummy stack is not empty
 	{
